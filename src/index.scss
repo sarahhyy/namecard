@@ -1,0 +1,600 @@
+$system-font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$question-font-stack: $system-font-stack;
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+section {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	font-family: $system-font-stack;
+	overflow: hidden;
+}
+
+#overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 0;
+	right: 0;
+	z-index: 1500;
+	font-family: $system-font-stack;
+	
+	div {
+		color: white;
+		border-radius: 50%;
+		height: 3rem;
+		width: 3rem;
+		line-height: 3rem;
+		cursor: pointer;
+		text-align: center;
+		font-size: 2rem;
+		display: inline;
+		position: absolute;
+
+		&:hover{
+			background-color: rgba(0, 0, 0, 0.2);
+		}
+	}
+
+	#up-button {
+		top: 2rem;
+		right: 2rem;
+	}
+
+	#down-button {
+		bottom: 2rem;
+		right: 2rem;
+	}
+}
+
+//Intro
+
+#intro {
+	background-color: #2c2c54;
+	height: 100%;
+	font-family: $system-font-stack;
+	display: block;
+
+	h1 {
+		color: white;
+		text-align: center;
+		margin-top: 2rem;
+		display: none;
+	}
+
+	$chat-screen-radius: 0.3rem;
+	$them-color: #e5e5ea;
+	$me-color: #1289fe;
+
+	#chat-screen {
+		width: 50%;
+		height: 80%;
+		position: absolute;
+		top: 50%; left: 50%; transform: translateY(-50%) translateX(-50%);
+
+		border-radius: $chat-screen-radius;
+		background-color: white;
+		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+		overflow-x: hidden;
+		overflow-y: auto;
+
+		#chat-top-bar {
+			background-color: #fafafa;
+			padding: 0.8rem;
+			width: 100%;
+			border-radius: $chat-screen-radius $chat-screen-radius 0 0;
+			text-align: center;
+			font-weight: bold;
+			margin-bottom: 0.6rem;
+		}
+
+		.time {
+			text-align: center;
+			color: #aaa;
+			font-size: 0.8rem;
+			margin-bottom: 0.2rem;
+		}
+
+		.message {
+			display: none;
+			width: 100%;
+			position: relative;
+
+			p {
+				display: inline-block;
+				margin: 0.25rem 0;
+				border-radius: 1rem;
+				padding: 0.5rem 1rem;
+				background-color: $them-color;
+				position: relative;
+			}
+
+			&.them {
+				margin-left: 0.5rem;
+
+				p::after {
+					content: "";
+					position: absolute;
+					left: -0.5rem;
+					bottom: 0;
+					width: 0.5rem;
+					height: 1rem;
+					border-right: 0.5rem solid $them-color;
+					border-bottom-right-radius: 1rem 0.5rem;
+				}
+			}
+
+			&.me {
+				float: right;
+				margin-right: 0.5rem;
+				max-width: 100%;
+				margin-top: 0.5rem;
+				z-index: 1000;
+
+				p {
+					float: right;
+					background-color: $me-color;
+					color: white;
+				}
+
+				&.input p {
+					padding: 1rem 1rem 0.7rem 1rem; 
+				}
+
+				input {
+					outline: none;
+					border: none;
+					border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+					background-color: $me-color;
+					font-size: 1.4rem;
+					color: white;
+				}
+
+				input::placeholder {
+					color: white;
+					opacity: 0.5;
+				}
+
+				p::after {
+					content: "";
+					position: absolute;
+					right: -0.5rem;
+					bottom: 0;
+					width: 0.5rem;
+					height: 1rem;
+					border-left: 0.5rem solid $me-color;
+					border-bottom-left-radius: 1rem 0.5rem;
+				}
+			}
+		}
+	}
+}
+
+.section-container {
+	width: 100%;
+	position: absolute;
+	top: 50vh;
+	transform: translateY(-50%);
+}
+
+.question {
+	background-color: #fafafa;
+	border-radius: 0.3rem;
+	height: 5rem;
+	width: 50%;
+	margin: 0 auto;
+	margin-bottom: 2rem;
+	padding: 0.5rem;
+	display: flex;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	font-family: $question-font-stack;
+
+	.question-avatar {
+		flex: 0 0 auto;
+		height: 4rem;
+		width: 4rem;
+		border-radius: 0.2rem;
+		background-color: #fff;
+		float: left;
+
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.question-bubble {
+		flex-grow: 1;
+		padding-left: 0.5rem;
+		float: left;
+		font-size: 1.2rem;
+
+		h1 {
+			font-size: 0.8rem;
+			margin-bottom: 0;
+			text-transform: uppercase;
+		}
+
+		p {
+			margin-top: 0;
+		}
+	}
+}
+
+#single-word {
+	background-color: #40407a;
+	display: none;
+
+	.single-word-input {
+		display: flex;
+		width: 50%;
+		margin: 0 auto;
+		height: 3rem;
+		color: white;
+		font-size: 2rem;
+		align-items: baseline;
+
+		input {
+			flex-grow: 1;
+			outline: none;
+			border: none;
+			background: none;
+			font-size: 2rem;
+			margin-left: 0.5rem;
+			border-bottom: 2px solid white;
+			color: white;
+		}
+	}
+}
+
+@import url('https://fonts.googleapis.com/css?family=Coming+Soon');
+#color-palette {
+	background: url("img/cloth_alike.png");
+	display: none;
+
+	.palette-list {
+		display: flex;
+
+		.palette {
+			flex: 1 0;
+			padding: 1rem 0.5rem 1.5rem 0.5rem;
+			background: rgba(255, 255, 255, 0.2);
+			border-radius: 0.5rem;
+			margin: 0 1rem;
+
+			&:hover {
+				background: rgba(255, 255, 255, 0.4);
+				cursor: pointer;
+			}
+
+			&.selected {
+				background: rgba(255, 255, 255, 0.6);
+			}
+
+			.palette-title {
+				font-size: 1.2rem;
+				font-weight: bold;
+				text-align: center;
+				font-family: 'Coming Soon', cursive;
+				color: #333;
+			}
+
+			.palette-colors {
+				.palette-color {
+					height: 1.5rem;
+					width: 1.5rem;
+					background-color: #ddd;
+					border-radius: 50%;
+					margin: 0 auto;
+					margin-top: 1rem;
+				}
+			}
+		}
+	
+	}
+}
+
+#music-genre {
+	background-color: rgba(24, 24, 24, 1);
+	display: none;
+
+	.music-list {
+		width: 50%;
+		margin: 0 auto;
+
+		text-align: center;
+
+		.genre {
+			display: inline-block;
+			border-radius: 2rem;
+			padding: 0.5rem 1rem;
+			margin-bottom: 0.5rem;
+			margin-right: 0.5rem;
+			background-color: rgba(39, 39, 39, 1);
+			color: white;
+			cursor: pointer;
+
+			&:hover {
+				background-color: rgba(50, 50, 50, 1);
+			}
+
+			&.selected {
+				background-color: rgba(80, 80, 80, 1);
+			}
+		}
+	}
+}
+
+#occupation {
+	background-color: #2c2c54;
+	display: none;
+
+	$first-color: #40407a;
+	$second-color: #706fd3;
+	$third-color: #f7f1e3;
+	$darken-amount: 10%;
+	$hover-darken-amount: 20%;
+	$select-darken-amount: 25%;
+
+	.occupations {
+		width: 50%;
+		margin: 0 auto;
+
+		& > div {
+			height: 32%;
+			padding: 1rem;
+
+			h1 {
+				margin-top: 0;
+				font-size: 1.2rem;
+				font-weight: bold;
+			}
+
+			.occupation-list {
+				width: 100%;
+				overflow: auto;
+				white-space: nowrap;
+			}
+
+			.occupation {
+				display: inline-block;
+				float: left;
+				border-radius: 2rem;
+				padding: 0.5rem 1rem;
+				margin-bottom: 0.5rem;
+				margin-right: 0.5rem;
+				cursor: pointer;
+			}
+		}
+
+		.occupation-first {
+			background-color: $first-color;
+			color: white;
+
+			.occupation {
+				background-color: darken($first-color, $darken-amount);
+
+				&:hover {
+					background-color: darken($first-color, $hover-darken-amount);
+				}
+
+				&.selected {
+					background-color: darken($first-color, $select-darken-amount);
+				}
+			}
+		}
+
+		.occupation-second {
+			background-color: $second-color;
+			color: white;
+
+			.occupation {
+				background-color: darken($second-color, $darken-amount);
+
+				&:hover {
+					background-color: darken($second-color, $hover-darken-amount);
+				}
+
+				&.selected {
+					background-color: darken($second-color, $select-darken-amount);
+				}
+			}
+		}
+
+		.occupation-third {
+			background-color: $third-color;
+			color: #333;
+
+			.occupation {
+				background-color: lighten($third-color, $darken-amount);
+
+				&:hover {
+					background-color: darken($third-color, 5%);
+				}
+
+				&.selected {
+					background-color: darken($third-color, 10%);
+				}
+			}
+		}
+	}
+}
+
+#toto {
+	display: none;
+	background: #33d9b2;
+
+	.toto-desk {
+		text-align: center;
+
+		$toto-color: rgba(251, 24, 31, 0.7);
+
+		.toto-card {
+			padding: 1rem;
+			display: inline-block;
+			margin: 0 auto;
+			border-radius: 1rem;
+			background: url("img/extra_clean_paper.png");
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+
+			.toto-logo {
+				float: left;
+				box-sizing: content-box;
+				border: 2px solid darken($toto-color, 10%);
+				margin-left: 0.5rem;
+				height: 20rem;
+				width: 4rem;
+				background-color: darken($toto-color, 10%);
+
+				h1 {
+					transform-origin: left top 0;
+					transform: rotate(90deg) translateY(-3rem) translateX(1rem);
+					font-size: 2.5rem;
+					font-style: italic;
+					color: white;
+					margin: 0;
+				}
+			}
+
+			.toto-number-box {
+				float: left;
+				box-sizing: content-box;
+				height: 19rem;
+				width: 22rem;
+				border: 2px solid $toto-color;
+				border-radius: 0.1rem;
+				padding: 0.5rem;
+				position: relative;
+
+				.toto-qp-void {
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					width: 12.5rem;
+					height: 3.25rem;
+					background-color: $toto-color;
+				}
+
+				.toto-number {
+					height: 2.75rem;
+					width: 2rem;
+					border: 2px solid $toto-color;
+					color: $toto-color;
+					font-size: 1.2rem;
+					line-height: 2.5rem;
+					text-align: center;
+					float: left;
+					position: relative;
+					cursor: pointer;
+					transition: all 0.2s ease-in;
+
+					&:hover {
+						border: 2px solid darken($toto-color, 30%);
+					}
+
+					&.not-edge {
+						margin-right: 0.5rem;
+						margin-bottom: 0.5rem;
+					}
+
+					&::before {
+						content: "";
+						position: absolute;
+						top: 0;
+						bottom: 2.75rem;
+						left: 50%;
+						opacity: 0;
+						transition: all 0.2s ease-out;
+						right: 50%;
+						width: 6px;
+						background-color: #706fd3;
+						opacity: 0.8;
+						transform: translateX(-50%);
+					}
+
+					&.selected {
+						&::before {
+							bottom: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#end {
+	background-color: #ffb142;
+	display: none;
+
+	.email {
+		width: 50%;
+		margin: 0 auto;
+		background-color: #fff;
+		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+		border-radius: 0.3rem;
+
+		.email-subject {
+			padding: 1rem 1rem;
+			font-weight: 400;
+			font-size: 1.2rem;
+			border-bottom: 1px solid #eee;
+		}
+
+		.email-info {
+			overflow: auto;
+			height: auto;
+			padding: 0.7rem 1rem;
+			border-bottom: 1px solid #eee;
+
+			.email-name {
+				font-weight: bold;
+				float: left;
+			}
+
+			.email-time {
+				float: right;
+			}
+		}
+
+		.email-body {
+			padding: 0.7rem 1rem;
+
+			p {
+				line-height: 1.5;
+			}
+		}
+
+	}
+}
+
+#instructions {
+	background-color: #eee;
+	display: none;
+
+	.instructions-div {
+		width: 50%;
+		margin: 0 auto;
+
+		h1 {
+			font-family: "Coming Soon", $system-font-stack;
+		}
+
+		p {
+			font-size: 1rem;
+			line-height: 1.4;
+		}
+	}
+}
+

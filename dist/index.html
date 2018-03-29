@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="" rel="stylesheet">
+</head>
+<body>
+    <section id="intro">
+        <h1>Tinkertanker Namecard</h1>
+        <div id="chat-screen">
+            <div id="chat-top-bar">
+                The Tinkertanker Office
+            </div>
+            <div class="time">
+                <b>Today</b> 1:54 PM
+            </div>
+            <div class="message me" id="message-1">
+                <p>hey can i get a keycard?</p>
+            </div>
+            <div class="message them" id="message-2">
+                <p>if im going to give you the keys 🔑to my heart ❤️</p>
+            </div>
+            <div class="message them" id="message-3">
+                <p>tell me a little bout yourself first</p>
+            </div>
+            <div class="message them" id="message-4">
+                <p>whats your name?</p>
+            </div>
+
+            <div class="message me input" id="message-5">
+                <p><input placeholder="name" type="text"></p>
+            </div>
+
+            <div class="message them" id="message-6">
+                <p>hmmmmmm</p>
+            </div>
+            <div class="message them" id="message-7">
+                <p>i have a few more questions for you</p>
+            </div>
+        </div>
+    </section>
+    <section id="single-word">
+        <div class="question">
+            <div class="question-avatar">
+                <img src="data:image/png;base64,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">
+            </div>
+            <div class="question-bubble">
+                <h1>@Office</h1>
+                <p>What's one word to describe yourself?</p>
+            </div>
+        </div>
+        <div class="single-word-input">
+            <div>I am</div>
+            <input type="text">
+            <div>.</div>
+        </div>
+    </section>
+    <section id="color-palette">
+        <div class="question">
+            <div class="question-avatar">
+                <img src="data:image/png;base64,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">
+            </div>
+            <div class="question-bubble">
+                <h1>@Office</h1>
+                <p>Choose a colour palette.</p>
+            </div>
+        </div>
+        <div class="palette-list">
+            <!-- To be generated by JS -->
+            <div class="palette">
+                <div class="palette-title">Warm</div>
+                <div class="palette-colors">
+                    <div class="palette-color"></div>
+                    <div class="palette-color"></div>
+                    <div class="palette-color"></div>
+                </div>
+            </div>
+            <div class="palette">
+                <div class="palette-title">Cold</div>
+                <div class="palette-colors">
+                    <div class="palette-color"></div>
+                    <div class="palette-color"></div>
+                    <div class="palette-color"></div>
+                </div>
+            </div>
+            <div class="palette">
+                <div class="palette-title">Blue</div>
+                <div class="palette-colors">
+                    <div class="palette-color"></div>
+                    <div class="palette-color"></div>
+                    <div class="palette-color"></div>
+                </div>
+            </div>
+            <div class="palette">
+                <div class="palette-title">Green</div>
+                <div class="palette-colors">
+                    <div class="palette-color"></div>
+                    <div class="palette-color"></div>
+                    <div class="palette-color"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="music-genre">
+        <div class="question">
+            <div class="question-avatar">
+                
+            </div>
+            <div class="question-bubble">
+                <h1>@Office</h1>
+                <p>What music do you like listening to?</p>
+            </div>
+        </div>
+        <div class="music-list">
+        </div>
+    </section>
+    <section id="occupation">
+        <div class="question">
+            <div class="question-avatar">
+                
+            </div>
+            <div class="question-bubble">
+                <h1>@Office</h1>
+                <p>So, what exactly do you do?</p>
+            </div>
+        </div>
+        <div class="occupations">
+            <div class="occupation-first">
+                <h1>Big Boss</h1>
+                <div class="occupation-list">
+                    <span class="occupation">Big Boss</span>
+                    <span class="occupation">Social Media Intern</span>
+                </div>
+            </div>
+            <div class="occupation-second">
+                <h1>Full Time</h1>
+                <div class="occupation-list">
+                    <span class="occupation">Wire Cutter</span>
+                    <span class="occupation">Code Machine</span>
+                    <span class="occupation">Box Mover</span>
+                    <span class="occupation">Image Prettifier</span>
+                    <span class="occupation">Irritated Teacher</span>
+                    <span class="occupation">Laser Cutter</span>
+                    <span class="occupation">Kit Assembler</span>
+                    <span class="occupation">Tupperware Trotsky</span>
+                </div>
+            </div>
+            <div class="occupation-third">
+                <h1>Proletariat</h1>
+                <div class="occupation-list">
+                    <span class="occupation">Coffee Brewer</span>
+                    <span class="occupation">Saikang Warrior</span>
+                    <span class="occupation">Slacker</span>
+                    <span class="occupation">Mascot</span>
+                    <span class="occupation">Office Pet</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="toto">
+        <div class="question">
+            <div class="question-avatar">
+                
+            </div>
+            <div class="question-bubble">
+                <h1>@Office</h1>
+                <p>What are your six lucky numbers?</p>
+            </div>
+        </div>
+        <div class="toto-desk">
+            <div class="toto-card">
+                <div class="toto-number-box">
+                    <div class="toto-qp-void"></div>
+                </div>
+                <div class="toto-logo">
+                    <h1>TINKERTOTO</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="end">
+        <div class="question">
+            <div class="question-avatar">
+                
+            </div>
+            <div class="question-bubble">
+                <h1>@Office</h1>
+                <p>I'm done!</p>
+            </div>
+        </div>
+        <div class="email">
+            <div class="email-subject">
+                RE: Your Keycard
+            </div>
+            <div class="email-info">
+                <div class="email-name">The Tinkertanker Office</div>
+                <div class="email-time">11:04 PM</div>
+            </div>
+            <div class="email-body">
+                <p class="email-hey">Hey, Namehere</p>
+                <div class="email-keycard"></div>
+                <p class="email-end">This is just for you.<br><br>Love, <br>The Office.</p>
+            </div>
+        </div>
+    </section>
+    <section id="instructions">
+        <div class="question">
+            <div class="question-avatar">
+                
+            </div>
+            <div class="question-bubble">
+                <h1>@Office</h1>
+                <p>Oh, as for how to get your keycard?</p>
+            </div>
+        </div>
+        <div class="instructions-div">
+            <h1>Instructions to get Keycard</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis iaculis ultrices erat, ut fermentum ipsum congue ut. Donec laoreet fermentum purus, ut suscipit ante venenatis in. Nullam cursus augue ac magna sollicitudin, id elementum lectus volutpat. Duis eget tellus turpis. Nulla nec ullamcorper metus. Nullam a massa non sapien placerat rutrum. Vivamus consectetur, urna nec sagittis venenatis, urna urna accumsan elit, eu sodales felis nunc vestibulum ligula.</p>
+        </div>
+    </section>
+<script type="text/javascript" src="main.js"></script></body>
+</html>
