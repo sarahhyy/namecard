@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "js/index.js",
+  "homepage": "https://sarahhyy.github.io/namecard",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
